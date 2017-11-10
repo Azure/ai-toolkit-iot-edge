@@ -6,7 +6,7 @@ The toolkit is a collection of scripts, code, and deployable containers. We've i
 We welcome your feedback and contributions and look forward to building together. 
 
 Thanks, 
-    Azure Machine Learning team. 
+    the Azure Machine Learning team. 
 
 # Contributing
 
