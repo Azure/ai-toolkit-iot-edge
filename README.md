@@ -1,3 +1,12 @@
+# Welcome to the Azure IoT Edge AI Toolkit
+
+Our goal with the Azure IoT Edge Toolkit is to bring the power of advanced analytics, machine learning, and artificial intelligence to the edge. The toolkit will show you how to package deep learning models in IoT Hub compliant Docker containers and expose them as REST APIs. 
+The toolkit is a collection of scripts, code, and deployable containers. We've included examples for predictive maintenance, image classification, and speech processing to help get you started, but the possibilities are wide open. We'll be adding new examples and tools often. The models can be used as-is or and customized to better meet your specific needs and use cases. 
+
+We welcome your feedback and contributions and look forward to building together. 
+
+Thanks, 
+    Azure Machine Learning team. 
 
 # Contributing
 
