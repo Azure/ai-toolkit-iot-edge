@@ -10,7 +10,7 @@ The detailed documentation for this real world scenario includes the step-by-ste
 
 [https://docs.microsoft.com/azure/machine-learning/preview/scenario-time-series-forecasting](https://docs.microsoft.com/azure/machine-learning/preview/scenario-time-series-forecasting)
 
-## Link to the Gallery GitHub repository
+## Link to the Azure Machine Learning Gallery GitHub repository
 
 The public GitHub repository for this real world scenario contains all the code samples:
 

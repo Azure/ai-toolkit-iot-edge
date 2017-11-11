@@ -14,7 +14,7 @@ The detailed documentation for this real world scenario includes the step-by-ste
 
 [https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition)
 
-## Link to the Gallery GitHub repository
+## Link to the Azure Machine Learning Gallery GitHub repository
 
 The public GitHub repository for this real world scenario contains all the code samples:
 
