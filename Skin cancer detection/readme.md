@@ -17,25 +17,28 @@ Here we build an AI model that will take the image of a mole in real time and tr
 ## Prerequisites:
 	pip install tensorflow keras tqdm h5py
 
-## Experimentation steps:
+## WorkBench experimentation steps:
 To install and create the experimentation framework using AMLWorkbench, please follow the simple tutorial here. 
 We upload the root folder as a project in AML Workbench. Once the project is created -
 	- We run the train_skin_cancer_app.py 
 	- This produces a trained model
 	- We then run the test_skin_cancer_app.py to test the accuracy of the model
 
+## Running the AI model in iPhone
 To bring the trained model on an iPhone and run it on the phone without any connection, we use the CoreML with a Xamarin App. We pip install coreML in the Workbench & run the keras_to_coreml_converter.py. This creates the mlmodel compatible to run on iOS. 
 
 Now to use this CoreML model witha Xamarin app, we follow 4 steps:
 1) Download a sample Xamarin app from here (https://github.com/Azure-Samples/cognitive-services-ios-customvision-sample)
 2) We replace the Custom Vision API model here with our custom model which we created using AML Workbench.
 3) We follow the instructions in this link (https://developer.xamarin.com/guides/ios/platform_features/introduction-to-ios11/coreml/).
-4) We compile the coreml model in Xcode 9 or manually using the xcrun command. 
+4) We compile the coreml model in Xcode 9 or manually using the xcrun command
+	xcrun coremlcompiler compile {model.mlmodel} {outputFolder}
 5) We add a compiled CoreML model to the Resources directory of the project.  
-6) Next I change the name of the model in the controller file and load the compiled model here 
-7) In view controller, we change the result extraction function to output the messages we want the app to spit out. 
-8) Please see the edited AzureML.CoreML.Video folder for the changes we made to the sample app (mentioned in step one)
-
+6) Next I change the name of the model in the controller file and load the compiled model
+	<>
+7) In view controller, we change the result extraction function to output the messages we want the app to spit out
+	<>
+	
 Thus we have a video version of the Xamarin app here which uses a real-time video feed as input and outputs a label. If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
 
 With only 3 lines of code change in our sample Xamarin app, we can run any AI model model on our phone. We’re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you! 
