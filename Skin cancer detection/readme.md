@@ -15,21 +15,8 @@ Azure Machine Learning Workbench is a cross-platform desktop application, which 
 Here we build an AI model that will take the image of a mole in real time and try to predict if the person is at risk or not. We create the deep learning model using a few simple functions and open-source packages supported in Azure ML. We use Azure Machine Learning Workbench to build this Skin Cancer detection model using Keras with Tensorflow backend. We use the Workbench for building the machine learning model and convert the model to CoreML format. We can drop this CoreML model in a Xamarin app and run the Xamarin app on an iPhone. 
 
 Prerequisites:
-	pip install tensorflow
-	pip install keras
-	pip install tqdm
-	pip install h5py
-		
-We have the data in the format below:
-	-train
-	   -benign
-	   -malignant
-	-validation
-	   -benign
-	   -malignant
-	test
-	   -benign
-	   -malignant
+	pip install tensorflow keras tqdm h5py
+
 
 Experimentation steps:
 To install and create the experimentation framework using AMLWorkbench, please follow the simple tutorial here. 
