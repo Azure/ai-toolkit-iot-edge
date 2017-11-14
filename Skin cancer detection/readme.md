@@ -15,28 +15,28 @@ Azure Machine Learning Workbench is a cross-platform desktop application, which 
 Here we build an AI model that will take the image of a mole in real time and try to predict if the person is at risk or not. We create the deep learning model using a few simple functions and open-source packages supported in Azure ML. We use Azure Machine Learning Workbench to build this Skin Cancer detection model using Keras with Tensorflow backend. We use the Workbench for building the machine learning model and convert the model to CoreML format. We can drop this CoreML model in a Xamarin app and run the Xamarin app on an iPhone. 
 
 Prerequisites:
-	•pip install tensorflow
-	•pip install keras
-	•pip install tqdm
-	•pip install h5py
+	pip install tensorflow
+	pip install keras
+	pip install tqdm
+	pip install h5py
 		
 We have the data in the format below:
-	•train
-	  -benign
-	  -malignant
-	•validation
-	  -benign
-	  -malignant
-	•test
-	  -benign
-	  -malignant
+	-train
+	   -benign
+	   -malignant
+	-validation
+	   -benign
+	   -malignant
+	test
+	   -benign
+	   -malignant
 
 Experimentation steps:
 To install and create the experimentation framework using AMLWorkbench, please follow the simple tutorial here. 
 We upload the root folder as a project in AML Workbench. Once the project is created -
-	•We run the train_skin_cancer_app.py 
-	•This produces a trained model
-	•We then run the test_skin_cancer_app.py to test the accuracy of the model
+	- We run the train_skin_cancer_app.py 
+	- This produces a trained model
+	- We then run the test_skin_cancer_app.py to test the accuracy of the model
 To bring the trained model on an iPhone and run it on the phone without any connection, we use the CoreML with a Xamarin App. We pip install coreML in the Workbench 
 
 & run the keras_to_coreml_converter.py. This creates the mlmodel compatible to run on iOS. We drop this mlmodel to a Xamarin app, and only with 3 lines of code change we can run the model on our phone. We have two versions of the app here:
@@ -44,5 +44,5 @@ To bring the trained model on an iPhone and run it on the phone without any conn
 2) The AzureML.CoreML.Video uses a real-time video feed as input and outputs a label. 
 If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
 
-As we see here, AML Workbench makes it amazingly easy to develop the end-2-end pipeline for Intelligent Edge applications. Hope you find this app useful. We’re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you!
+As we see here, AML Workbench makes it amazingly easy to develop the end-2-end pipeline for Intelligent Edge applications. Hope you find this app useful. Weâ€™re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you!
 
