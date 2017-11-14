@@ -24,9 +24,7 @@ We upload the root folder as a project in AML Workbench. Once the project is cre
 	- We run the train_skin_cancer_app.py 
 	- This produces a trained model
 	- We then run the test_skin_cancer_app.py to test the accuracy of the model
-To bring the trained model on an iPhone and run it on the phone without any connection, we use the CoreML with a Xamarin App. We pip install coreML in the Workbench 
-
-& run the keras_to_coreml_converter.py. This creates the mlmodel compatible to run on iOS. We drop this mlmodel to a Xamarin app, and only with 3 lines of code change we can run the model on our phone. We have two versions of the app here:
+To bring the trained model on an iPhone and run it on the phone without any connection, we use the CoreML with a Xamarin App. We pip install coreML in the Workbench & run the keras_to_coreml_converter.py. This creates the mlmodel compatible to run on iOS. We drop this mlmodel to a Xamarin app, and only with 3 lines of code change we can run the model on our phone. We have two versions of the app here:
 1) The AzureML.CoreML.Photo uses a static photo as input and outputs a label. 
 2) The AzureML.CoreML.Video uses a real-time video feed as input and outputs a label. 
 If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
