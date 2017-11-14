@@ -4,7 +4,7 @@ This full-length tutorial shows how to use Azure Machine Learning services (prev
 
 Skin cancer is the most common form of cancer, globally accounting for at least 40% of cases. If detected at an early stage, it can be controlled. We want to create a mobile AI application for everyone to be able to quickly detect whether they need to seek help. The app can flag a set of images which in turn helps the doctors to be more efficient and only focus on the most critical images.
 
-For this tutorial, we use the ISIC Skin Cancer [dataset] (https://isic-archive.com/). You can refer to this GitHub [link] (https://github.com/antriv/ISIC-Dataset-Downloader) to find out how to download this research dataset. 
+For this tutorial, we use the ISIC Skin Cancer dataset (https://isic-archive.com/). You can refer to this GitHub link (https://github.com/antriv/ISIC-Dataset-Downloader) to find out how to download this research dataset. 
 In this tutorial, we - 
 1) Build the Model using Azure Machine Learning
 2) Convert the model to CoreML
@@ -27,7 +27,7 @@ We upload the root folder as a project in AML Workbench. Once the project is cre
 To bring the trained model on an iPhone and run it on the phone without any connection, we use the CoreML with a Xamarin App. We pip install coreML in the Workbench & run the keras_to_coreml_converter.py. This creates the mlmodel compatible to run on iOS. 
 
 Now to use this CoreML model witha Xamarin app, we follow 4 steps:
-1) Download asample Xamarin app fron [here] (https://github.com/Azure-Samples/cognitive-services-ios-customvision-sample)
+1) Download asample Xamarin app fron here (https://github.com/Azure-Samples/cognitive-services-ios-customvision-sample)
 2) We replace the custom Vision API model here with our custom model which we created using AML Workbench.
 3) We compile the coreml model in Xcode 9 or manually using the xcrun command. 
 4) We add a compiled CoreML model to the Resources directory of the project.  
