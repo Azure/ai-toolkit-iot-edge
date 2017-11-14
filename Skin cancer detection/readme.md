@@ -27,12 +27,13 @@ We upload the root folder as a project in AML Workbench. Once the project is cre
 To bring the trained model on an iPhone and run it on the phone without any connection, we use the CoreML with a Xamarin App. We pip install coreML in the Workbench & run the keras_to_coreml_converter.py. This creates the mlmodel compatible to run on iOS. 
 
 Now to use this CoreML model witha Xamarin app, we follow 4 steps:
-1) Download asample Xamarin app fron here (https://github.com/Azure-Samples/cognitive-services-ios-customvision-sample)
-2) We replace the custom Vision API model here with our custom model which we created using AML Workbench.
+1) Download a sample Xamarin app from here (https://github.com/Azure-Samples/cognitive-services-ios-customvision-sample)
+2) We replace the Custom Vision API model here with our custom model which we created using AML Workbench.
 3) We compile the coreml model in Xcode 9 or manually using the xcrun command. 
 4) We add a compiled CoreML model to the Resources directory of the project.  
 5) Next I change the name of the model in the controller file and load the compiled model here 
 6) In view controller, we change the result extraction function to output the messages we want the app to spit out. 
+7) Please see the edited AzureML.CoreML.Video folder for the changes we made to the sample app (mentioned in step one)
 
 Thus we have a video version of the Xamarin app here which uses a real-time video feed as input and outputs a label. If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
 
