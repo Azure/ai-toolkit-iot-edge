@@ -18,7 +18,7 @@ Here we build an AI model that will take the image of a mole in real time and tr
 	pip install tensorflow keras tqdm h5py
 
 ## WorkBench experimentation steps:
-To install and create the experimentation framework using AMLWorkbench, please follow the simple tutorial here. 
+To install and create the experimentation framework using AMLWorkbench, please follow the simple tutorial here (https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation). 
 We upload the root folder as a project in AML Workbench. Once the project is created
 1) We run the train_skin_cancer_app.py 
 2) This produces a trained model
@@ -36,6 +36,7 @@ Now to use this CoreML model witha Xamarin app, we follow 4 steps:
 5) We add a compiled CoreML model to the Resources directory of the project.  
 6) Next I change the name of the model in the view controller file and load the compiled model
 7) In view controller, we change the result extraction function to output the messages we want the app to spit out
+8) Please find a sample ViewController.cs file in  the git here.
 Thus we have a video version of the Xamarin app here which uses a real-time video feed as input and outputs a label. If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
 
 With only 3 lines of code change in our sample Xamarin app, we can run any AI model model on our phone. We’re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you! 
