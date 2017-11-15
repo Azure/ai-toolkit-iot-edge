@@ -2,9 +2,9 @@
 
 The integration of Azure Machine Learning and Azure IoT Edge enables organizations and developers to apply AI and ML to data that can’t make it to the cloud due to data sovereignty, privacy, and/or bandwidth issues. All models created using Azure Machine Learning can now be deployed to IoT gateways and devices with the Azure IoT Edge runtime. Models are operationalized as containers and can run on many types of hardware, from very small devices all the way to powerful servers.
 
-We're releasing this toolkit to help get you started with AI and Azure IoT Edge. The toolkit will show you how to package deep learning models in IoT-compliant Docker containers and expose those models as REST APIs. We've included examples to help get you started, but the possibilities are endless. We'll be adding new examples and tools often. The models can be used as-is or and customized to better meet your specific needs and use cases. 
+We're releasing this toolkit to help get you started with AI and Azure IoT Edge. The toolkit will show you how to package deep learning models in Azure IoT Edge-compatible Docker containers and expose those models as REST APIs. We've included examples to help get you started, but the possibilities are endless. We'll be adding new examples and tools often. The models can be used as-is or and customized to better meet your specific needs and use cases. 
 
-We welcome your feedback and contributions and look forward to building together.
+Please ask any questions on our [forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=MachineLearning).  We welcome your feedback and contributions and look forward to building together.
 
 ## Concepts
 * [Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/) is designed for data scientists to build, deploy, manage, and monitor models at any scale
@@ -13,7 +13,7 @@ We welcome your feedback and contributions and look forward to building together
 
 # Quick start
 ## AI on the edge
-One use case for edge devices is image processing and object classification.  For example, images taken by cameras of products on an assembly line in a factory may be analyzed for manufacturing defects without having to send the images to the cloud.  To simplify this problem for the tutorial, we will create and deploy a model that will take in an image of a handwritten digit and predict what that number is.  We will use the well-known [MNIST](http://yann.lecun.com/exdb/mnist/) data set and [TensorFlow](https://www.tensorflow.org/) to build and train the model.
+One use case for edge devices is image processing and object classification.  For example, images taken by cameras of products on an assembly line in a factory may be analyzed for manufacturing defects without having to send the images to the cloud.  To simplify this problem for the tutorial, we will create and deploy a model that will take in an image of a handwritten digit and predict what that number is.  We will use the well-known [MNIST](http://yann.lecun.com/exdb/mnist/) data set and a pre-trained [TensorFlow](https://www.tensorflow.org/) model.
 
 ## Environment set up
 If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
@@ -66,11 +66,17 @@ az ml env set -n [environment name] -g [resource group]
 ```
 *Note:* For subsequent deployments, you only need to use the set command above to reuse it.
 
-8. You are now ready to deploy your saved model as a web service. 
+You are now ready to deploy your saved model as a web service.
 
-```azurecli
-az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
-```
+## Deploy your model
+The [full tutorial](https://github.com/Azure/MachineLearningSamples-tf/tree/RuonanO16N) has more details.
+
+1. Copy these files to the working directory of your DSVM
+ * my_ConvNet_MNIST_model.data
+ * my_ConvNet_MNIST_model.index
+ * my_ConvNet_MNIST_model.meta
+ * checkpoint
+
 
 
 
