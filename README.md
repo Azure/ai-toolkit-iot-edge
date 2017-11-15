@@ -68,17 +68,8 @@ az ml env set -n [environment name] -g [resource group]
 
 You are now ready to deploy your saved model as a web service.
 
-## Deploy your model
-The [full tutorial](https://github.com/Azure/MachineLearningSamples-tf/tree/RuonanO16N) has more details.
-
-1. Copy these files to the working directory of your DSVM
- * my_ConvNet_MNIST_model.data
- * my_ConvNet_MNIST_model.index
- * my_ConvNet_MNIST_model.meta
- * checkpoint
-
-
-
+## Create container for Azure IoT Edge
+[Follow these steps](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/MNIST%20classification%20with%20TensorFlow) to create the container for deployment to Azure IoT Edge running on your DSVM.
 
 # Contributing
 
