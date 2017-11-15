@@ -1,0 +1,2 @@
+model_checkpoint_path: "/tmp/model/my_ConvNet_MNIST_model"
+all_model_checkpoint_paths: "/tmp/model/my_ConvNet_MNIST_model"
