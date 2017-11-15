@@ -32,13 +32,10 @@ Now to use this CoreML model witha Xamarin app, we follow 4 steps:
 2) We replace the Custom Vision API model here with our custom model which we created using AML Workbench.
 3) We follow the instructions in this link (https://developer.xamarin.com/guides/ios/platform_features/introduction-to-ios11/coreml/).
 4) We compile the coreml model in Xcode 9 or manually using the xcrun command
-	xcrun coremlcompiler compile {model.mlmodel} {outputFolder}
+	-xcrun coremlcompiler compile {model.mlmodel} {outputFolder}
 5) We add a compiled CoreML model to the Resources directory of the project.  
-6) Next I change the name of the model in the controller file and load the compiled model
-	<>
+6) Next I change the name of the model in the view controller file and load the compiled model
 7) In view controller, we change the result extraction function to output the messages we want the app to spit out
-	<>
-	
 Thus we have a video version of the Xamarin app here which uses a real-time video feed as input and outputs a label. If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
 
 With only 3 lines of code change in our sample Xamarin app, we can run any AI model model on our phone. We’re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you! 
