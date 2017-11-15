@@ -20,9 +20,9 @@ Here we build an AI model that will take the image of a mole in real time and tr
 ## WorkBench experimentation steps:
 To install and create the experimentation framework using AMLWorkbench, please follow the simple tutorial here. 
 We upload the root folder as a project in AML Workbench. Once the project is created
-	- We run the train_skin_cancer_app.py 
-	- This produces a trained model
-	- We then run the test_skin_cancer_app.py to test the accuracy of the model
+1) We run the train_skin_cancer_app.py 
+2) This produces a trained model
+3) We then run the test_skin_cancer_app.py to test the accuracy of the model
 
 ## Running the AI model in iPhone
 To bring the trained model on an iPhone and run it on the phone without any connection, we use the CoreML with a Xamarin App. We pip install coreML in the Workbench & run the keras_to_coreml_converter.py. This creates the mlmodel compatible to run on iOS. 
