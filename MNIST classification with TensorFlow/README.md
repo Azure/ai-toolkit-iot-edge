@@ -21,4 +21,4 @@ $ az ml service create realtime -m my_ConvNet_MNIST_model.meta -d my_ConvNet_MNI
 $ python webservice_invoke.py
 ```
 
-4. Your Docker image is now stored in Azure Container Registry and ready for [deployment to an Azure IoT Edge device](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deploy-to-iot-edge-device) or [consumption ](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-consumption).  
+4. Your Docker image is now stored in Azure Container Registry and ready for [deployment to an Azure IoT Edge device](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deploy-to-iot-edge-device) or [consumption](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-consumption).
