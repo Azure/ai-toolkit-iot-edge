@@ -1,10 +1,12 @@
 # Welcome to the AI Toolkit for Azure IoT Edge
 
-Today we are excited to announce the integration of Azure Machine Learning and Azure IoT Edge. This integration will help organizations and developers apply AI and ML to data that can’t make it to the cloud due to data sovereignty, privacy, and/or bandwidth issues. All models created using Azure Machine Learning can now be deployed to IoT gateways and devices with the Azure IoT Edge runtime. Models are deployed in the form of containers and can run on very small devices all the way to powerful servers.
+The integration of Azure Machine Learning and Azure IoT Edge enables organizations and developers to apply AI and ML to data that can’t make it to the cloud due to data sovereignty, privacy, and/or bandwidth issues. All models created using Azure Machine Learning can now be deployed to IoT gateways and devices with the Azure IoT Edge runtime. Models are operationalized as containers and can run on many types of hardware, from very small devices all the way to powerful servers.
 
-We're releasing this toolkit to help get you started with AI and IoT Edge. The toolkit will show you how to package deep learning models in IoT-compliant Docker containers and expose those models as REST APIs. We've included examples to help get you started, but the possibilities are wide open. We'll be adding new examples and tools often. The models can be used as-is or and customized to better meet your specific needs and use cases. 
+We're releasing this toolkit to help get you started with AI and Azure IoT Edge. The toolkit will show you how to package deep learning models in IoT-compliant Docker containers and expose those models as REST APIs. We've included examples to help get you started, but the possibilities are endless. We'll be adding new examples and tools often. The models can be used as-is or and customized to better meet your specific needs and use cases. 
 
-We welcome your feedback and contributions and look forward to building together. 
+We welcome your feedback and contributions and look forward to building together.
+
+
 
 # Contributing
 
