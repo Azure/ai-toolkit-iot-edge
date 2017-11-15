@@ -6,6 +6,72 @@ We're releasing this toolkit to help get you started with AI and Azure IoT Edge.
 
 We welcome your feedback and contributions and look forward to building together.
 
+## Concepts
+* [Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/) is designed for data scientists to build, deploy, manage, and monitor models at any scale
+* [Azure IoT Edge](https://aka.ms/azure-iot-edge-doc) moves cloud analytics and custom business logic to devices as an Internet of Things (IoT) service that builds on top of IoT Hub
+* AI Toolkit for Azure IoT Edge is an evolving set of scripts, sample code, and tutorials that enable you to easily set up a test environment and run AI and ML on an edge device
+
+# Quick start
+## AI on the edge
+One use case for edge devices is image processing and object classification.  For example, images taken by cameras of products on an assembly line in a factory may be analyzed for manufacturing defects without having to send the images to the cloud.  To simplify this problem for the tutorial, we will create and deploy a model that will take in an image of a handwritten digit and predict what that number is.  We will use the well-known [MNIST](http://yann.lecun.com/exdb/mnist/) data set and [TensorFlow](https://www.tensorflow.org/) to build and train the model.
+
+## Environment set up
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+
+1. [Install Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation)
+1. [Create an IoT Hub and register an IoT Edge device](https://aka.ms/azure-iot-edge-doc)
+1. [Create an IoT Edge device](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/Azure%20IoT%20Edge%20on%20DSVM) with the Data Science VM (DSVM)
+  * You will need a connection string from the IoT Hub you created in the previous step.
+  * This DSVM doubles as an IoT Edge device and the machine you can use to operationalize models
+
+## Set up Model Management for Azure ML
+If you are already an Azure ML user then skip to the next section.
+
+If you are not using the DSVM from the previous section for Azure ML, then [set up Model Management](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration) on your machine.
+
+Otherwise, follow these steps (more details in the [Model Management documentation](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration)):
+
+1. Connect and log into the DSVM you created in the previous section
+2. Open a command prompt (type `az ml -h` to see options)
+3. Run the script below to configure Docker correctly (Docker is pre-installed on the DSVM). **Remember to log out and log back in after running the script.**
+```
+sudo /opt/microsoft/azureml/initial_setup.sh
+```
+4. Set up the environment (only needs to be done one time).  Note when completing the environment setup:
+  * You are prompted to sign in to Azure. To sign in, use a web browser to open the page https://aka.ms/devicelogin and enter the provided code to authenticate.
+  * During the authentication process, you are prompted for an account to authenticate with. Important: Select an account that has a valid Azure subscription and sufficient permissions to create resources in the account.
+  * When the log-in is complete, your subscription information is presented and you are prompted whether you wish to continue with the selected account.
+
+5. Register the environment provider by entering the following command:
+
+```azurecli
+az provider register -n Microsoft.MachineLearningCompute
+```
+6. Set up a local environment using the following command. The resource group name is optional.
+
+```azurecli
+az ml env setup -l [Azure Region, e.g. eastus2] -n [your environment name] [-g [existing resource group]]
+```
+
+7. The local environment setup command creates the following resources in your subscription:
+* A resource group (if not provided, or if the name provided does not exist)
+* A storage account
+* An Azure Container Registry (ACR)
+* An Application insights account
+
+After setup completes successfully, set the environment to be used using the following command:
+
+```azurecli
+az ml env set -n [environment name] -g [resource group]
+```
+*Note:* For subsequent deployments, you only need to use the set command above to reuse it.
+
+8. You are now ready to deploy your saved model as a web service. 
+
+```azurecli
+az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
+```
+
 
 
 # Contributing
