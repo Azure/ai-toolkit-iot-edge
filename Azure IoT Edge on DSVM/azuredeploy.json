@@ -72,7 +72,7 @@
         "virtualNetworkName": "[parameters('vmName')]",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
-        "fileUris": "https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/Azure%20IoT%20Edge%20on%20DSVM/install.sh"
+        "fileUris": "https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/Azure%20IoT%20Edge%20on%20DSVM/install.sh?token=AMLQA5MavunceJUE3fipwk-Kf6keZ7hfks5aFL9awA%3D%3D"
     },
     "resources": [
         {
