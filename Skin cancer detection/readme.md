@@ -19,7 +19,7 @@ Here we build an AI model that will take the image of a mole in real time and tr
 
 ## WorkBench experimentation steps:
 To install and create the experimentation framework using AMLWorkbench, please follow the simple tutorial here. 
-We upload the root folder as a project in AML Workbench. Once the project is created -
+We upload the root folder as a project in AML Workbench. Once the project is created
 	- We run the train_skin_cancer_app.py 
 	- This produces a trained model
 	- We then run the test_skin_cancer_app.py to test the accuracy of the model
@@ -32,7 +32,7 @@ Now to use this CoreML model witha Xamarin app, we follow 4 steps:
 2) We replace the Custom Vision API model here with our custom model which we created using AML Workbench.
 3) We follow the instructions in this link (https://developer.xamarin.com/guides/ios/platform_features/introduction-to-ios11/coreml/).
 4) We compile the coreml model in Xcode 9 or manually using the xcrun command
-	-xcrun coremlcompiler compile {model.mlmodel} {outputFolder}
+	"xcrun coremlcompiler compile {model.mlmodel} {outputFolder}"
 5) We add a compiled CoreML model to the Resources directory of the project.  
 6) Next I change the name of the model in the view controller file and load the compiled model
 7) In view controller, we change the result extraction function to output the messages we want the app to spit out
