@@ -4,6 +4,6 @@ This tool is an extension to the [Microsoft Azure Data Science Virtual Machine (
 
 Click the button below to create a Data Science VM and add-on the IoR Edge Runtime.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fai-toolkit-iot-edge%2Fmaster%2FAzure%2520IoT%2520Edge%2520on%2520DSVM%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FDataScienceVM%2Fmaster%2FExtensions%2FIoTEdge%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
