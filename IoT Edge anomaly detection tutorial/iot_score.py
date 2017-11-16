@@ -1,6 +1,6 @@
 # This script generates the scoring file
 # with the init and run functions needed to 
-# operationalize the Iris Classification sample
+# operationalize the anomaly detection sample
 
 # Import data collection library. Only supported for docker mode.
 # Functionality will be ignored when package isn't found
