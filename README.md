@@ -38,7 +38,11 @@ Otherwise, follow these steps (more details in the [Model Management documentati
 sudo /opt/microsoft/azureml/initial_setup.sh
 ```
 4. Set up the environment (only needs to be done one time).  Note when completing the environment setup:
-  * You are prompted to sign in to Azure. To sign in, use a web browser to open the page https://aka.ms/devicelogin and enter the provided code to authenticate.
+  * You are prompted to sign in to Azure. 
+```
+az login
+```
+  To sign in, use a web browser to open the page https://aka.ms/devicelogin and enter the provided code to authenticate.
   * During the authentication process, you are prompted for an account to authenticate with. Important: Select an account that has a valid Azure subscription and sufficient permissions to create resources in the account.
   * When the log-in is complete, your subscription information is presented and you are prompted whether you wish to continue with the selected account.
 
