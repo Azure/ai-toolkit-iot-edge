@@ -52,11 +52,11 @@ def run(input_str):
     print("Prediction is ", pred[0])
 
     if pred[0] == '1':
-        pred_str = input_json['timeCreated'] + ": ANOMALY Detected"
+        input_json['anomaly']=True
     else:
-        pred_str = input_json['timeCreated'] + ": Normal"
+        input_json['anomaly']=False
 
-    return [pred_str]
+    return [json.dumps(input_json)]
 
 def main():
   from azureml.api.schema.dataTypes import DataTypes
