@@ -21,7 +21,7 @@ train_files, train_targets = load_dataset('/data/Keras_Transfer_Learning/ISIC_Sk
 valid_files, valid_targets = load_dataset('/data/Keras_Transfer_Learning/ISIC_Skin_Cancer/data/validation')
 test_files, test_targets = load_dataset('/data/Keras_Transfer_Learning/ISIC_Skin_Cancer/data/test')
 
-# load list of dog names
+# load list of labels
 condition_names = [item[58:-1] for item in sorted(glob("/data/Keras_Transfer_Learning/ISIC_Skin_Cancer/data/train/*/"))]
 print (condition_names)
 # print statistics about the dataset
@@ -50,15 +50,6 @@ def paths_to_tensor(img_paths):
     return np.vstack(list_of_tensors)
 
 
-# ---
-# <a id='step3'></a>
-# ## Step 3: Create a CNN to Classify Dog Breeds (from Scratch)
-# 
-# ### Pre-process the Data
-# 
-# We rescale the images by dividing every pixel in every image by 255.
-
-# In[3]:
 
 from PIL import ImageFile                            
 ImageFile.LOAD_TRUNCATED_IMAGES = True                 
@@ -130,7 +121,7 @@ model.load_weights('weights.best.from_scratch.6.hdf5')
 
 # In[6]:
 
-# get index of predicted dog breed for each image in test set
+# get index of predicted label for each image in test set
 condition_predictions = [np.argmax(model.predict(np.expand_dims(tensor, axis=0))) for tensor in test_tensors]
 
 # report test accuracy
