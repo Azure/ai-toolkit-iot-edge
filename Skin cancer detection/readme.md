@@ -38,8 +38,13 @@ Now to use this CoreML model witha Xamarin app, we follow 4 steps:
 7) In view controller, we change the result extraction function to output the messages we want the app to spit out
 8) Please find a sample ViewController.cs file in  the git here.
 
-
-
 Thus we have a video version of the Xamarin app here which uses a real-time video feed as input and outputs a label. If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
 
 With only 3 lines of code change in our sample Xamarin app, we can run any AI model model on our phone. We’re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you! 
+
+## Pretrained models
+We have links to 2 pretrained models :
+
+Link to pretrained KERAS Skin Cancer Model: https://microsoft-my.sharepoint.com/:u:/p/antriv/EbZqTzEk4uFJl5DBbaVkMRcBttyz8OXDJ_UxTrediVbUEw?e=VOqoCb
+
+Link to Pretrained COREML Skin Cancer model: https://microsoft-my.sharepoint.com/:u:/p/antriv/EclA9kLa7Q5DsYG1yOIJjZUBjldLjeA1e0VF9FsE1gzj5w?e=IKkNUw
