@@ -1,0 +1,210 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "userName": {
+            "type": "string",
+            "metadata": {
+                "description": "Username for the Virtual Machine."
+            }
+        },
+        "password": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Password for the Virtual Machine."
+            }
+        },
+        "deviceconnectionstring": {
+            "type": "string",
+            "metadata": {
+                "description": "IoT Edge Device Connection String."
+            }
+        }	
+    },
+    "variables": {
+        "uniqueNameSuffix": "[toLower(uniqueString(resourceGroup().id,subscription().subscriptionId))]",
+        "location": "[resourceGroup().location]",
+        "publicIPAddressesVersion": "2015-06-15",
+        "virtualNetworksVersion": "2015-06-15",
+        "networkInterfacesVersion": "2015-06-15",
+        "numberOfInstances": 1,
+        "imagePublisher": "microsoft-ads",
+        "DimageOffer": "linux-data-science-vm-ubuntu",
+        "sku": "linuxdsvmubuntu",
+        "DnicName": "[concat('dvmnic', variables('uniqueNameSuffix'))]",
+        "DaddressPrefix": "11.0.0.0/16",
+        "subnetName": "Subnet",
+        "DsubnetPrefix": "11.0.0.0/24",
+        "publicIPAddressType": "Dynamic",
+        "DpublicIPAddressName": "[concat('dpubip', variables('uniqueNameSuffix'))]",
+        "DvmName": "mydevicevm",
+        "DvmSize": "Standard_D4S_v3",
+        "DvirtualNetworkName": "[concat('dvnet', variables('uniqueNameSuffix'))]",
+        "DvnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('DvirtualNetworkName'))]",
+        "DsubnetRef": "[concat(variables('DvnetID'),'/subnets/',variables('subnetName'))]",
+        "fileUris": "https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/IoTEdge/install.sh"
+    },
+    "resources": [
+        {
+            "apiVersion": "[variables('publicIPAddressesVersion')]",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[concat(variables('DpublicIPAddressName'), copyindex())]",
+            "location": "[variables('location')]",
+            "copy": {
+                "name": "publicIPLoop",
+                "count": "[variables('numberOfInstances')]"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[concat(variables('DpublicIPAddressName'), copyindex())]"
+                }
+            }
+        },
+        {
+            "apiVersion": "[variables('virtualNetworksVersion')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[variables('DvirtualNetworkName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('DaddressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[variables('DsubnetPrefix')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "[variables('networkInterfacesVersion')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[concat(variables('DnicName'), copyindex())]",
+            "location": "[variables('location')]",
+            "copy": {
+                "name": "nicLoop",
+                "count": "[variables('numberOfInstances')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', concat(variables('DpublicIPAddressName'),copyindex()))]",
+                "[concat('Microsoft.Network/virtualNetworks/', variables('DvirtualNetworkName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(variables('DpublicIPAddressName'),copyindex()))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('DsubnetRef')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2016-04-30-preview",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[concat(variables('DvmName'), copyIndex())]",
+            "location": "[variables('location')]",
+            "copy": {
+                "name": "virtualMachineLoop",
+                "count": "[variables('numberOfInstances')]"
+            },
+            "plan": {                
+                "name": "[variables('sku')]",
+                "publisher": "[variables('imagePublisher')]",
+                "product": "[variables('DimageOffer')]"
+            },
+            "tags": {
+                "Application": "DataScience"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', variables('DnicName'), copyindex())]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[variables('DvmSize')]"
+                },
+                "osProfile": {
+                    "computerName": "[concat(variables('DvmName'), copyIndex())]",
+                    "adminUsername": "[parameters('userName')]",
+                    "adminPassword": "[parameters('password')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('DimageOffer')]",
+                        "sku": "[variables('sku')]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "[concat(variables('DvmName'), 'osdisk', copyIndex())]",
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage"
+                    },
+                    "dataDisks": [
+                        {
+                            "name": "[concat(variables('DvmName'), 'data', copyIndex())]",
+                            "createOption": "FromImage",
+                            "lun": 0
+                        }
+                    ]
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('DnicName'), copyindex()))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": false
+                    }
+                }
+            },
+            "resources": [
+                {
+                 "type": "extensions",
+                 "name": "iotEdge",
+                 "apiVersion": "2015-06-15",
+                 "location": "[variables('location')]",
+                 "dependsOn": [
+                   "[concat('Microsoft.Compute/virtualMachines/', variables('DvmName'), copyIndex())]"
+                 ],
+                 "properties": {
+                   "publisher": "Microsoft.OSTCExtensions",
+                   "type": "CustomScriptForLinux",
+                   "typeHandlerVersion": "1.4",
+                   "autoUpgradeMinorVersion": true,
+                   "settings": {
+                     "fileUris": "[split(variables('fileUris'), ' ')]"
+                   },
+             "protectedSettings": {
+                    "commandToExecute": "[concat('bash install.sh \"', parameters('deviceconnectionstring'), '\" ', parameters('userName'))]"
+             }        
+                 }
+                }
+            ]	
+        }
+    ],
+    "outputs": {
+        "dfirstDeviceVmUrl": { "type": "string", "value": "[concat('https://portal.azure.com/#resource/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Compute/virtualMachines/', variables('DvmName'), '0')]" },
+        "dnumInstances": { "type": "string", "value": "[string(variables('numberOfInstances'))]" },
+        "dvmName": { "type": "string", "value": "[variables('DvmName')]" },
+        "dadminUsername": { "type": "string", "value": "[parameters('userName')]" },
+        "ddnsName": {"type": "string", "value": "[concat(variables('DpublicIPAddressName'), '0.', variables('location'), '.cloudapp.azure.com')]"},
+        "dsshConnection": { "type": "string", "value": "[concat('ssh ', parameters('userName'), '@', variables('DpublicIPAddressName'), '0.', variables('location'), '.cloudapp.azure.com')]" }
+    }
+}

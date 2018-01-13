@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Template>
+  <Title>IoT Edge</Title>
+  <Owner displayname="Darwin Schweitzer" email="darsch@microsoft.com"/>
+  <ImageUrl>{PatternAssetBaseUrl}/artificial-intelli.png</ImageUrl>
+  <Description>Learn how to use Azure IoT Edge</Description>
+  <Summary src="Summary.md" format="markdown"/>
+  <EstimatedTime>5 Minutes</EstimatedTime>
+  <EstimatedCost daily="$tbd" url="https://azure.github.io/Azure-CloudIntelligence-SolutionAuthoringWorkspace/solution-prices" />
+    <Ingredients>
+    <Ingredient>VirtualMachine</Ingredient>
+    <Ingredient>MachineLearning</Ingredient>
+  </Ingredients>
+  <ProvisioningSteps>
+    <Manual parameterSource="template-parameters.json" title="Login for resources" >
+      <Parameters>
+        <Parameter name="baseUrl" hidden="true">
+          <DefaultValue>{PatternAssetBaseUrl}</DefaultValue>
+        </Parameter>
+        <Credential type="windowsvm,linuxvm" username="userName" password="password" />
+      </Parameters>
+    </Manual>
+    <ArmDeployment source="template-iothub.json" title="Creating an Azure IoT Hub" autoResolveParameters="true" />
+    <Manual title="Enter IoT Edge Device Connection string to install and start the IoT Edge runtime">
+      <Instructions src="iotedgert.md" format="markdown" />
+      <Parameters>
+        <Parameter name="deviceconnectionstring" description="IoT Edge Device Connection string--primarykey" type="string" />
+      </Parameters>
+    </Manual>
+    <ArmDeployment source="template-ldeviceext-ciqs.json" title="Installing and starting the IoT Edge runtime" autoResolveParameters="true" />
+    <ArmDeployment source="template-tsi.json" title="Creating Time Series Insights Environment" autoResolveParameters="true" />
+    <Manual title="Done">
+      <Instructions src="Instructions.md" format="markdown" />
+    </Manual>
+  </ProvisioningSteps>
+</Template>

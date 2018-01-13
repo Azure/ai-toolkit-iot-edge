@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "variables": {
+        "location": "[resourceGroup().location]",
+        "uniqueNameSuffix": "[toLower(uniqueString(resourceGroup().id,subscription().subscriptionId))]",
+        "environmentName": "[concat('tsienv', variables('uniqueNameSuffix'))]",
+        "environmentSkuName": "S1",
+        "environmentSkuCapacity": 1,
+        "environmentDataRetentionTime": "P30D"
+    },
+    "resources": [
+    {
+        "type": "Microsoft.TimeSeriesInsights/environments",
+        "name": "[variables('environmentName')]",
+        "apiVersion": "2017-02-28-preview",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "dataRetentionTime": "[variables('environmentDataRetentionTime')]"
+        },
+        "sku": {
+            "name": "[variables('environmentSkuName')]",
+            "capacity": "[variables('environmentSkuCapacity')]"
+        }
+    }
+],
+    "outputs": {
+        "dataAccessPaneUrl": { "type": "string", "value": "[concat('https://portal.azure.com/#resource/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.TimeSeriesInsights/environments/', variables('environmentName'),'/access')]" },
+        "eventSourceUrl": { "type": "string", "value": "[concat('https://portal.azure.com/#resource/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.TimeSeriesInsights/environments/', variables('environmentName'),'/eventSources')]" }
+    }
+}

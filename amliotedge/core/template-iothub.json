@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "location": "[resourceGroup().location]",
+    "uniqueNameSuffix": "[toLower(uniqueString(resourceGroup().id,subscription().subscriptionId))]",
+    "hubName": "[concat('iothub', variables('uniqueNameSuffix'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-02-03",
+      "type": "Microsoft.Devices/IotHubs",
+      "name": "[variables('hubName')]",
+      "location": "[variables('location')]",
+      "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "location": "[variables('location')]"
+      }
+    },
+    {
+      "apiVersion": "2016-02-03",
+      "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+      "name": "[concat(variables('hubName'), '/events/cg1')]",
+      "dependsOn": [
+        "[concat('Microsoft.Devices/Iothubs/', variables('hubName'))]"
+      ]
+    },
+    {
+      "apiVersion": "2016-02-03",
+      "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+      "name": "[concat(variables('hubName'), '/events/cg2')]",
+      "dependsOn": [
+        "[concat('Microsoft.Devices/Iothubs/', variables('hubName'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "iotEdgeDevice": { "type": "string", "value": "[concat('https://portal.azure.com/#resource/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Devices/IotHubs/', variables('hubName'), '/EdgeExplorer')]" }
+  }
+}

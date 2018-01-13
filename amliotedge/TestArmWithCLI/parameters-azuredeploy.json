@@ -1,0 +1,11 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+     "adminUsername": { "value" : "aiuser" },
+     "adminPassword": { "value" : "BigDataAI2018!" },
+     "vmName": { "value" : "datadarwiniot8" },
+     "vmSize": { "value" : "Standard_DS3_v2"},
+     "deviceconnectionstring": { "value" : "HostName=iothubjzgjg5zmnw5gy.azure-devices.net;DeviceId=paulhome;SharedAccessKey=Vz0DShxmFHDkCipqdSMqP43JIZxWw6SXBi6jBmY3O7s=" }
+  }
+}
