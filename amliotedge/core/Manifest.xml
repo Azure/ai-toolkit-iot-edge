@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Template>
   <Title>IoT Edge</Title>
-  <Owner displayname="Darwin Schweitzer" email="darsch@microsoft.com"/>
+  <Owners>
+    <Owner displayname="Darwin Schweitzer" email="darsch@microsoft.com"/>
+  </Owners>
   <ImageUrl>{PatternAssetBaseUrl}/artificial-intelli.png</ImageUrl>
   <Description>Learn how to use Azure IoT Edge</Description>
   <Summary src="Summary.md" format="markdown"/>
-  <EstimatedTime>5 Minutes</EstimatedTime>
-  <EstimatedCost daily="$tbd" url="https://azure.github.io/Azure-CloudIntelligence-SolutionAuthoringWorkspace/solution-prices" />
+  <EstimatedTime>10 Minutes</EstimatedTime>
+  <EstimatedCost daily="$10.69" url="https://azure.github.io/Azure-CloudIntelligence-SolutionAuthoringWorkspace/solution-prices#iot-edge" />
     <Ingredients>
     <Ingredient>VirtualMachine</Ingredient>
     <Ingredient>MachineLearning</Ingredient>
