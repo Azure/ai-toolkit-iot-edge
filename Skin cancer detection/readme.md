@@ -1,4 +1,4 @@
-# Mobile AI: Using Azure Machine Learning Workbench to develop Mobile AI applications for the Intelligent Edge
+# Mobile AI: Using Azure Machine Learning to develop Mobile AI applications for the Intelligent Edge
 
 This full-length tutorial shows how to use Azure Machine Learning services (preview) end to end for creating a machine learning model for Skin Cancer Detection and run it on mobile phones.
 
