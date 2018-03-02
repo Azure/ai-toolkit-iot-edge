@@ -42,13 +42,5 @@ Thus we have a video version of the Xamarin app here which uses a real-time vide
 
 With only 3 lines of code change in our sample Xamarin app, we can run any AI model model on our phone. We’re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you! 
 
-## Pretrained models
-We have links to 2 pretrained models :
-
-Link to pretrained KERAS Skin Cancer Model: https://microsoft-my.sharepoint.com/:u:/p/antriv/EbZqTzEk4uFJl5DBbaVkMRcBttyz8OXDJ_UxTrediVbUEw?e=VOqoCb
-
-Link to Pretrained COREML Skin Cancer model: https://microsoft-my.sharepoint.com/:u:/p/antriv/EclA9kLa7Q5DsYG1yOIJjZUBjldLjeA1e0VF9FsE1gzj5w?e=IKkNUw
-
-
 ## DISCLAIMER:
 This model/application is intended for research and development use only.  The model/application is not intended for use in clinical diagnosis or clinical decision-making or for any other clinical use and the performance of the model/application for clinical use has not been established.
