@@ -41,6 +41,3 @@ Now to use this CoreML model witha Xamarin app, we follow 4 steps:
 Thus we have a video version of the Xamarin app here which uses a real-time video feed as input and outputs a label. If the predicted label is at risk, the app suggests see a doctor. If the predicted label is not at risk, the app indicates all clear. 
 
 With only 3 lines of code change in our sample Xamarin app, we can run any AI model model on our phone. We’re looking forward to seeing how you may utilize Azure Machine Learning for your business. Thank you! 
-
-## DISCLAIMER:
-This model/application is intended for research and development use only.  The model/application is not intended for use in clinical diagnosis or clinical decision-making or for any other clinical use and the performance of the model/application for clinical use has not been established.
