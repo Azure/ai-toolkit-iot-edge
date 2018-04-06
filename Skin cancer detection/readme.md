@@ -2,7 +2,7 @@
 
 This full-length tutorial shows how to use Azure Machine Learning services (preview) end to end for creating a machine learning model for Skin Cancer Detection and run it on mobile phones.
 
-Skin cancer is the most common form of cancer, globally accounting for at least 40% of cases. If detected at an early stage, it can be controlled. We want to create a mobile AI application for everyone to be able to quickly detect whether they need to seek help. The app can flag a set of images which in turn helps the doctors to be more efficient and only focus on the most critical images.
+Skin cancer is the most common form of cancer, globally accounting for at least 40% of cases. If detected at an early stage, it can be controlled. We want to create a mobile AI application to flag a set of images which in turn helps the doctors to be more efficient and only focus on the most critical images.
 
 For this tutorial, we use the ISIC Skin Cancer dataset (https://isic-archive.com/). You can refer to this GitHub link (https://github.com/antriv/ISIC-Dataset-Downloader) to find out how to download this research dataset. 
 In this tutorial, we - 
@@ -13,6 +13,9 @@ In this tutorial, we -
 Azure Machine Learning Workbench is a cross-platform desktop application, which makes the modeling and model deployment process much faster versus what was possible before. 
 
 Here we build an AI model that will take the image of a mole in real time and try to predict if the person is at risk or not. We create the deep learning model using a few simple functions and open-source packages supported in Azure ML. We use Azure Machine Learning Workbench to build this Skin Cancer detection model using Keras with Tensorflow backend. We use the Workbench for building the machine learning model and convert the model to CoreML format. We can drop this CoreML model in a Xamarin app and run the Xamarin app on an iPhone. 
+
+## Disclaimer
+This model/application is intended for research and development use only. The model/application is not intended for use in clinical diagnosis or clinical decision-making or for any other clinical use and the performance of the model/application for clinical use has not been established.
 
 ## Prerequisites:
 	pip install tensorflow keras tqdm h5py
