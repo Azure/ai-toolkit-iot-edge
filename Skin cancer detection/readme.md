@@ -1,10 +1,9 @@
 # Mobile AI: Using Azure Machine Learning to develop Mobile AI applications for the Intelligent Edge
 
-This full-length tutorial shows how to use Azure Machine Learning services (preview) end to end for creating a machine learning model for Skin Cancer Detection and run it on mobile phones.
+This full-length tutorial shows how to use Azure Machine Learning services (preview) end to end for creating a machine learning model to run it on mobile phones.
 
-Skin cancer is the most common form of cancer, globally accounting for at least 40% of cases. If detected at an early stage, it can be controlled. We want to create a mobile AI application to flag a set of images which in turn helps the doctors to be more efficient and only focus on the most critical images.
+For this tutorial, we use the ISIC Skin Cancer dataset (https://isic-archive.com/), but you can use the same capabilities we describe below to categorize any number of different objects (e.g. type of fruits). You can refer to this GitHub link (https://github.com/antriv/ISIC-Dataset-Downloader) to find out how to download and pre-process this ISIC research dataset. 
 
-For this tutorial, we use the ISIC Skin Cancer dataset (https://isic-archive.com/). You can refer to this GitHub link (https://github.com/antriv/ISIC-Dataset-Downloader) to find out how to download this research dataset. 
 In this tutorial, we - 
 1) Build the Model using Azure Machine Learning
 2) Convert the model to CoreML
