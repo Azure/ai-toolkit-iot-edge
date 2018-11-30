@@ -8,4 +8,6 @@ sudo apt-get install moby-engine
 sudo apt-get install moby-cli
 sudo apt-get install iotedge
 sudo nano /etc/iotedge/config.yaml
+echo "RESTARTING"
 sudo systemctl restart iotedge
+echo "DONE"

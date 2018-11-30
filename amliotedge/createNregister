@@ -1,0 +1,45 @@
+if [[ $# != 5 ]] ; then
+  printf "YOU NEED TO INCLUDE THE FOLLOWING 5 PARAMETERS SEPARATED BY A SPACE IN THIS ORDER \n SUBSCRIPTION_ID \n IOT_RESOURCE_GROUP_TO_CREATE \n IOT_LOCATION \n IOT_HUBNAME \n IOT_DEVICE_ID \n" 
+ exit 0
+fi
+subscription="$1"
+iotrg="$2"
+iotlocation="$3"
+iot_hub_name="$4"
+iot_device_id="$5"
+
+
+echo  INSTALLING AZURE EXTENSION ...
+sudo apt-get install apt-transport-https lsb-release software-properties-common -y
+AZ_REPO=$(lsb_release -cs)
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+    sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-key --keyring /etc/apt/trusted.gpg.d/Microsoft.gpg adv \
+     --keyserver packages.microsoft.com \
+     --recv-keys BC528686B50D79E339D3721CEB3E94ADBE1229CF
+sudo apt-get update
+sudo apt-get install azure-cli
+
+echo  INSTALLING IOT EDGE EXTENSION  ...
+az extension add --name azure-cli-iot-ext
+
+echo LOGGING IN INTO AZURE ...
+az  login
+
+echo SETTING THE RIGHT SUBSCRIPTION 
+az account set --subscription  $1
+
+echo CREATING RG $iotrg
+az group create --name $iotrg --location $iotlocation
+
+echo CREATING HUB $iot_hub_name
+az iot hub create --name $iot_hub_name --resource-group $iotrg --sku S1
+
+echo CREATING DEVICE ID $iot_device_id
+az iot hub device-identity create --device-id $iot_device_id --hub-name $iot_hub_name --edge-enabled
+
+echo THIS IS YOUR CONNECTION STRING ... 
+az iot hub device-identity show-connection-string --device-id  $iot_device_id --hub-name $iot_hub_name
+
+echo COPY THIS CONNECTION STRING FOR YOUR DEVICE
+
