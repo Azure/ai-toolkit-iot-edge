@@ -11,7 +11,6 @@ from azureml.core.model import Model
 
 def init():
     global model
-    # note here "sklearn_regression_model.pkl" is the name of the model registered under
     # this is a different behavior than before when the code is run locally, even though the code is the same.
     model_path = Model.get_model_path('model.pkl')
     # deserialize the model file back into a sklearn model
@@ -27,7 +26,7 @@ def run(input_str):
     except Exception as e:
         result = str(e)
         
-    if pred[0] == '1':
+    if pred[0] == 1:
         input_json['anomaly']=True
     else:
         input_json['anomaly']=False
