@@ -9,11 +9,12 @@
           "settings": {
             "minDockerVersion": "v1.25",
             "loggingOptions": "",
-            "registryCredentials": {"tedwayamacrszmxuxxl": {
-			"username": "tedwayamacrszmxuxxl",
-			"password":"Rsq7sMoh28aFMm4AjAsfsmyPORe=Lk36",
-			"address":"tedwayamacrszmxuxxl.azurecr.io"
-		}
+            "registryCredentials": {
+              "registry": {
+          			"username": "username",
+          			"password":"password",
+          			"address":"registry.azurecr.io"
+          		}
             }
           }
         },
@@ -49,21 +50,21 @@
           "tempSensor": {
             "type": "docker",
             "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
-            "createOptions": ""
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": ""
             },
             "version": "1.0",
             "status": "running",
             "restartPolicy": "always"
-            },
+          },
           "machinelearningmodule": {
             "version": "1.0",
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "tedwayamacrszmxuxxl.azurecr.io/tempanomalydetection:6",
-			  "createOptions": "{\"HostConfig\":{\"Binds\":[\"/data/misc/camera:/app/vam_model_folder\"],\"NetworkMode\":\"host\"},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"WorkingDir\":\"/var/azureml-app\"}"
+              "image": "registry.azurecr.io/tempanomalydetection:6",
+			        "createOptions": "{\"HostConfig\":{\"Binds\":[\"/data/misc/camera:/app/vam_model_folder\"],\"NetworkMode\":\"host\"},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"WorkingDir\":\"/var/azureml-app\"}"
             }
           }
         }
@@ -71,21 +72,21 @@
     },
     "$edgeHub": {
       "properties.desired": {
-                "schemaVersion": "1.0",
-                "routes": {
-                    "sensorToMachineLearning": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/machinelearningmodule/inputs/amlInput\")",
-                    "machineLearningToIoTHub": "FROM /messages/modules/machinelearningmodule/outputs/amlOutput INTO $upstream"
-                },
-                "storeAndForwardConfiguration": {
-                    "timeToLiveSecs": 7200
-                }
+        "schemaVersion": "1.0",
+        "routes": {
+          "sensorToMachineLearning": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/machinelearningmodule/inputs/amlInput\")",
+          "machineLearningToIoTHub": "FROM /messages/modules/machinelearningmodule/outputs/amlOutput INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 7200
+        }
       }
     },
-            "tempSensor": {
-            "properties.desired": {}
-        },
-        "machinelearningmodule": {
-            "properties.desired": {}
-        }
+    "tempSensor": {
+      "properties.desired": {}
+    },
+    "machinelearningmodule": {
+      "properties.desired": {}
+    }
   }
 }
