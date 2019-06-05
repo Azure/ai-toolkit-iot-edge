@@ -7,7 +7,7 @@ We're releasing this toolkit to help get you started with AI and Azure IoT Edge.
 Please ask any questions on our [forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=MachineLearning).  We welcome your feedback and contributions and look forward to building together.
 
 ## Concepts
-* [Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/) is designed for data scientists to build, deploy, manage, and monitor models at any scale
+* [Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/) is designed for data scientists to build, deploy, manage, and monitor models at any scale
 * [Azure IoT Edge](https://aka.ms/azure-iot-edge-doc) moves cloud analytics and custom business logic to devices as an Internet of Things (IoT) service that builds on top of IoT Hub
 * AI Toolkit for Azure IoT Edge is an evolving set of scripts, sample code, and tutorials that enable you to easily set up a test environment and run AI and ML on an edge device
 
@@ -18,7 +18,7 @@ One use case for edge devices is image processing and object classification.  Fo
 ## Environment set up
 If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-1. [Install Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation)
+1. [Get started with Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service)
 1. [Create an IoT Hub and register an IoT Edge device](https://aka.ms/azure-iot-edge-doc)
 1. [Create an IoT Edge device](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/Azure%20IoT%20Edge%20on%20DSVM) with the Data Science VM (DSVM)
   * You will need a connection string from the IoT Hub you created in the previous step
