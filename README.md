@@ -18,18 +18,21 @@ One use case for edge devices is image processing and object classification.  Fo
 ## Environment set up
 If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-1. [Install Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation)
+1. [Install Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service)
 1. [Create an IoT Hub and register an IoT Edge device](https://aka.ms/azure-iot-edge-doc)
 1. [Create an IoT Edge device](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/Azure%20IoT%20Edge%20on%20DSVM) with the Data Science VM (DSVM)
   * You will need a connection string from the IoT Hub you created in the previous step
   * This DSVM doubles as an IoT Edge device and the machine you can use to operationalize models
 
 ## Set up Model Management for Azure ML
+
+** Model Management accounts are no longer supported with Azure ML. Try the [latest service](https://docs.microsoft.com/en-us/azure/machine-learning/service) instead.**
+
 If you are already an Azure ML user then skip to the next section.
 
-If you are not using the DSVM from the previous section for Azure ML, then [set up Model Management](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration) on your machine.
+If you are not using the DSVM from the previous section for Azure ML, then set up Model Management on your machine.
 
-Otherwise, follow these steps (more details in the [Model Management documentation](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration)):
+Otherwise, follow these steps:
 
 1. Connect and log into the DSVM you created in the previous section
 2. Open a command prompt (type `az ml -h` to see options)
@@ -70,9 +73,6 @@ You are now ready to deploy your saved model as a web service.
 
 ## Create container for Azure IoT Edge
 [Follow these steps](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/MNIST%20classification%20with%20TensorFlow) to create the container for deployment to Azure IoT Edge running on your DSVM.
-
-# Next Steps
-Check out our set of rich tutorials, where you can create, train, and deploy models for [predictive maintenance](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-predictive-maintenance), [aerial image classification](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-aerial-image-classification), [energy demand time series forecasting](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-time-series-forecasting), and more.  Then create your own!
 
 # Contributing
 
