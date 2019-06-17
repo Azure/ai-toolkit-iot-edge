@@ -1,3 +1,4 @@
+from __future__ import print_function
 from sklearn.datasets import load_files       
 from keras.utils import np_utils
 import numpy as np
@@ -31,7 +32,7 @@ def condition(img_path):
     test_tensor = path_to_tensor(img_path).astype('float32')/255
     # obtain predicted vector
     condition_prediction = model.predict(test_tensor)
-    print condition_prediction
+    print(condition_prediction)
     benign, malignant = condition_prediction.max(axis=0)
     if benign > malignant:
     	label = 'benign'
@@ -45,13 +46,10 @@ def condition(img_path):
 test_image = '/Users/ted/Documents/skin_cancer_edge/skin_cancer_coreml_27_shared_folder/test_images/malignant/54e755f6bae47850e86cdfef.jpg'
 model = load_model('/Users/ted/Documents/skin_cancer_edge/skin_cancer_coreml_27_shared_folder/weights.best.from_scratch.6.hdf5')
 label, score = condition(test_image)
-print label, score
+print(label, score)
 
 ### Test a benign image 
 test_image = '/Users/ted/Documents/skin_cancer_edge/skin_cancer_coreml_27_shared_folder/test_images/benign/57eea3479fc3c12a89bb51fa.jpg'
 model = load_model('/Users/ted/Documents/skin_cancer_edge/skin_cancer_coreml_27_shared_folder/weights.best.from_scratch.6.hdf5')
 label, score = condition(test_image)
-print label, score
-
-
-
+print(label, score)
