@@ -64,7 +64,7 @@
             "restartPolicy": "always",
             "settings": {
               "image": "__REGISTRY_IMAGE_LOCATION",
-			        "createOptions": "{\"HostConfig\":{\"Binds\":[\"/data/misc/camera:/app/vam_model_folder\"],\"NetworkMode\":\"host\"},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"WorkingDir\":\"/var/azureml-app\"}"
+              "createOptions": "{\"HostConfig\":{\"Binds\":[]},\"WorkingDir\":\"/var/azureml-app\"}"
             }
           }
         }
