@@ -64,7 +64,7 @@
             "restartPolicy": "always",
             "settings": {
               "image": "__REGISTRY_IMAGE_LOCATION",
-              "createOptions": "{\"HostConfig\":{\"Binds\":[]},\"WorkingDir\":\"/var/azureml-app\"}"
+              "createOptions": "{\"WorkingDir\":\"/var/azureml-app\"}"
             }
           }
         }
